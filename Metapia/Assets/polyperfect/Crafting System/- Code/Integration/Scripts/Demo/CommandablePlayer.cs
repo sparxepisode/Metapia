@@ -84,8 +84,9 @@ namespace PolyPerfect.Crafting.Integration.Demo
             var prefabAccessor = World.GetReadOnlyAccessor<GameObject>(PlaceableData.ID);
             if (!prefabAccessor.TryGetValue(pulled.ID, out var toPlace))
                 return;
-            
-            Instantiate(toPlace, GetDestination(), transform.rotation);
+
+            var pos = GetDestination();
+            Instantiate(toPlace, pos, transform.rotation);
         }
 
         bool IsAbleToStartPlacing()
@@ -93,7 +94,14 @@ namespace PolyPerfect.Crafting.Integration.Demo
             return Vector3.Distance(GetDestination(), transform.position) < InteractDistance;
         }
 
-        bool IsAbleToStartInteracting() => interactTarget && Vector3.Distance(transform.position,interactTarget.transform.position)<InteractDistance;
+        // bool IsAbleToStartInteracting() => interactTarget && Vector3.Distance(transform.position,interactTarget.transform.position)<InteractDistance;
+
+        public bool IsAbleToStartInteracting()
+        {
+
+            var dis = Vector3.Distance(transform.position, interactTarget.transform.position);
+            return interactTarget && dis < InteractDistance;
+        }
 
         public void MoveTo(Vector3 item)
         {

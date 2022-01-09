@@ -53,5 +53,6 @@ namespace PolyPerfect.Crafting.Integration
              var attachedSlot = go.GetComponentInChildren<IInsert<ItemStack>>();
              attachedSlot?.InsertPossible(stack);
         }
+       
     }
 }
