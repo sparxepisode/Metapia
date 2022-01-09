@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace PolyPerfect.Crafting.Integration.Demo
 {
-    public class GatherInteractable : BaseInteractable
+    public class  GatherInteractable : BaseInteractable
     {
         public override string __Usage => $"Transfers resources to the inventories of interacting GameObjects. If {nameof(DestroyOnEmpty)} is enabled and the object is empty for a full frame, it will be deleted.";
         readonly Dictionary<GameObject, TransferOverTime> transferers = new Dictionary<GameObject, TransferOverTime>();

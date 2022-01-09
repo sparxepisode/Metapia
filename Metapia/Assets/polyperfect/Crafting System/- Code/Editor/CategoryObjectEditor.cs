@@ -57,7 +57,7 @@ namespace PolyPerfect.Crafting.Edit
                     inlineEditor.Query<ObjectField>().ForEach(o => o.RegisterValueChangedCallback(e =>
                     {
                         RefreshIconLookup();
-                        o.QP<FilterableListview<BaseObjectWithID>>().Rebuild();
+                        o.QP<FilterableListview<BaseObjectWithID>>().Refresh();
                     }));
                 },
                 o => string.IsNullOrEmpty(searchField.text) || o.name.ToLower().Contains(searchField.text.ToLower())
